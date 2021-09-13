@@ -1,6 +1,5 @@
 // 少し書いたら試す、を、繰り返す
 'use strict'
-
 {//ここから
 
 // タスクのタイトル
@@ -10,19 +9,21 @@ const showThema = () => {
     console.log('====================');
   };
 
-// デフォルトで持っているタスク
-  const tasks = ['掃除', '買い物', '散歩'];
 
-  // タイトルとタスクをまとめて表示
-  const haveTasks = () => {
+// デフォルトで持っているタスクとジャンル
+const tasks = [
+  {task: '机を片付ける', genre: '掃除'},
+  {task: '牛乳を買う', genre: '買い物'},
+  {task: '散歩する', genre: '運動'},
+];
+
+  // タイトルとタスクとジャンルをまとめて表示、アクセス時に表示
+const haveTasks = () => {
     showThema();
     for (let i = 0; i < tasks.length; i++) {
-      console.log(`${i}：${tasks[i]}`);
+      console.log(`${i}：[内容]${tasks[i].task}、[ジャンル]${tasks[i].genre}`)
     }
   };
-
-
-
 
 // タスクを表示させる関数
 const showTasks = () => {
@@ -30,11 +31,14 @@ const showTasks = () => {
   haveTasks();
 
   //入力画面を表示
-  let inputPrompt = window.prompt('タスクを入力してください');//aは、入力した値
+  let inputTask = window.prompt('タスクを入力してください');
+  let inputGenre = window.prompt('ジャンルを入力してください');
   window.alert('新しいタスクを追加しました。');
 
   // 新しいタスクをtasks配列に追加
-  tasks.push(inputPrompt);
+  // 配列にオブジェクトを追加
+  tasks.push({task: inputTask, genre: inputGenre});
+
   // 追加したタスクも表示
   haveTasks();
 
@@ -45,4 +49,4 @@ const showTasks = () => {
 
 showTasks();
 
-}//ここから
+}//ここまで
